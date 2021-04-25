@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManagementSystemAPI.Models;
+using EmployeeManagementSystemAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,7 @@ namespace EmployeeManagementSystemAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddDbContext<EmployeeContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("EmployeeContext")));
             services.AddControllers();
