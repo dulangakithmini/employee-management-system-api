@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagementSystemAPI.Controllers
 {
+    // Defines the path that the controller will handle
+    [Route("api/employees")]
+    // Provide behaviour such as automatic model validation 
+    [ApiController]
     public class EmployeesController : Controller
     {
         private readonly IEmployeeRepository _repository;
