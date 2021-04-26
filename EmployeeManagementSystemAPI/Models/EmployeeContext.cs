@@ -10,5 +10,13 @@ namespace EmployeeManagementSystemAPI.Models
         }
         
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Department>()
+                .HasMany(e => e.Employees)
+                .WithOne(d => d.Department);
+        }
     }
 }
